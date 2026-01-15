@@ -66,6 +66,7 @@ Verify the tables have been created:
 ```sql
 SHOW TABLES;
 ```
+```
 ┌──────┐
 │ name │
 ╞══════╡
@@ -75,6 +76,7 @@ SHOW TABLES;
 │ tab4 │
 │ tab5 │
 └──────┘
+```
 
 ## Performing Joins
 
@@ -96,24 +98,26 @@ Verify the number of rows in `join_all`:
 ```sql
 SELECT COUNT(*) FROM join_all;
 ```
+```
 ┌─────────┐
 │ Count   │
 ╞═════════╡
 │ 1902543 │
 └─────────┘ 
+```
 
 ```sql
 SELECT count(*) AS column_count
    FROM duckdb_columns()
      WHERE table_name = 'join_all';
 ```
- 
+ ```
 ┌──────────────┐
 │ column_count │
 ╞══════════════╡
 │           85 │
 └──────────────┘
-
+```
 
 ## Profiling and Analysis
 
@@ -128,7 +132,7 @@ EXPLAIN ANALYZE
   POSITIONAL JOIN tab5;
 ```
  
-
+```
 ┌─────────────────────────────────────┐
 │┌───────────────────────────────────┐│
 ││    Query Profiling Information    ││
@@ -184,12 +188,12 @@ explain analyze from tab1   positional join tab2   positional join tab3   positi
 │           0 rows          ││           0 rows          ││           0 rows          ││           0 rows          ││           0 rows          │
 │          (0.00s)          ││          (0.00s)          ││          (0.00s)          ││          (0.00s)          ││          (0.00s)          │
 └───────────────────────────┘└───────────────────────────┘└───────────────────────────┘└───────────────────────────┘└───────────────────────────┘
-
+```
 
 ```sql
 FROM duckdb_memory();
 ```
- 
+```
 ┌─────────────────────┬────────────────────┬─────────────────────────┐
 │ tag                 ┆ memory_usage_bytes ┆ temporary_storage_bytes │
 ╞═════════════════════╪════════════════════╪═════════════════════════╡
@@ -208,7 +212,7 @@ FROM duckdb_memory();
 │ TRANSACTION         ┆                  0 ┆                       0 │
 │ EXTERNAL_FILE_CACHE ┆                  0 ┆                       0 │
 └─────────────────────┴────────────────────┴─────────────────────────┘
-
+```
 ### Natural Join
 
 Attempt to perform a natural join on the tables (note: this may result in an out-of-memory error):
@@ -232,8 +236,11 @@ If you encounter an out-of-memory error, consider the following solutions:
 
 ## Summary
 
-This project demonstrates how to use DuckDB to perform various types of joins on a large dataset. By following the steps outlined in this README, you can replicate the process and experiment with different join types and optimization techniques.
-Run the complete experiment locally
+This project demonstrates how to use DuckDB to perform various types of joins on a large dataset. 
+By following the steps outlined in this README, you can replicate the process and experiment with different join types and optimization techniques.
+
+Run the complete experiment locally (https://raw.githubusercontent.com/teoria/duckdb_heavy_joins/refs/heads/main/positional_join.sql)
+
 ---
 
 This README provides a comprehensive guide to setting up and running the project, including the necessary SQL commands and troubleshooting tips.
