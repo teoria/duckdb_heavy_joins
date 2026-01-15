@@ -45,12 +45,13 @@ Verify the number of rows in `tab1`:
 ```sql
 SELECT COUNT(*) FROM tab1;
 ```
+```
 ┌─────────┐
 │ Count   │
 ╞═════════╡
 │ 1902543 │
 └─────────┘
-
+```
 Create additional tables `tab2`, `tab3`, `tab4`, and `tab5` by copying the data from `tab1`:
 
 ```sql
